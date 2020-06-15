@@ -38,7 +38,11 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
         pass = (EditText) findViewById(R.id.txt_pass_usuario);
         reppass = (EditText) findViewById(R.id.txt_repetirpassword_usuario);
         codigo_trabajador = (Spinner) findViewById(R.id.cbx_codigo_trabajador_usuario);
+        con = new ConexionSQLite(getApplicationContext(), utilidades.NOMBRE_BASE_DE_DATOS,null,1);
         cargarCodigos();
+        for(int i=0;i<codigos.size();i++){
+            System.out.println(codigos.get(i));
+        }
         codigo_trabajador.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,codigos));
     }
 
@@ -80,7 +84,7 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
     public void cargarCodigos(){
         SQLiteDatabase db = con.getReadableDatabase();
         codigos.add("Seleccione un código");
-        Cursor cursor = db.rawQuery("SELECT * FROM "+utilidades.TABLA_USUARIO,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+utilidades.TABLA_TRABAJADOR,null);
         while(cursor.moveToNext()){
             codigos.add(cursor.getString(0));
         }
