@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Menú - CARWASH</string>
+    <string name="titulo_cliente">Clientes</string>
+    <string name="titulo_servicio">Servicios</string>
+    <string name="titulo_trabajador">Trabajadores</string>
+    <string name="titulo_usuario">Usuarios</string>
+    <string name="titulo_insumo">Insumos</string>
+    <string name="titulo_info">Acerca de</string>
+    <string name="titulo_agregar_usuario">Agregar usuario</string>
+</resources>
