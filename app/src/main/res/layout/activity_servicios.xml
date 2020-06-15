@@ -6,32 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".servicios"
     android:background="#fff">
+
     <ListView
         android:id="@+id/lista_servicios"
         android:layout_width="match_parent"
-        android:layout_height="644dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_regresar_servicio"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/estilo1"
-        android:foreground="?attr/actionModeCloseDrawable"
-        android:foregroundTint="#fff"
-        android:text=""
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_servicios"
-        app:layout_constraintVertical_bias="0.589" />
 
     <Button
         android:id="@+id/btn_agregar_servicio"
@@ -47,5 +32,21 @@
         app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toEndOf="@+id/btn_regresar_servicio"
         app:layout_constraintTop_toBottomOf="@+id/lista_servicios"
-        app:layout_constraintVertical_bias="0.589" />
+        app:layout_constraintVertical_bias="0.926" />
+
+    <Button
+        android:id="@+id/btn_regresar_servicio"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/estilo1"
+        android:foreground="?attr/actionModeCloseDrawable"
+        android:foregroundTint="#fff"
+        android:text=""
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_servicios"
+        app:layout_constraintVertical_bias="0.926" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,17 +23,16 @@ public class agregar_insumo extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_insumo);
-        this.setTitle("Agregar usuario");
-        View boton = findViewById(R.id.btn_guardar_agregar_cliente);
+        this.setTitle("Agregar insumo");
+        View boton = findViewById(R.id.btn_guardar_agregar_insumo);
         boton.setOnClickListener(this);
-
+        con = new ConexionSQLite(getApplicationContext(), utilidades.NOMBRE_BASE_DE_DATOS,null,1);
         codigo = (EditText) findViewById(R.id.txt_codigo_insumo);
         nombre = (EditText) findViewById(R.id.txt_nombre_insumo);
         precio = (EditText) findViewById(R.id.txt_preciounitario_insumo);
         cantidad = (EditText) findViewById(R.id.txt_cantidad_insumo);
         descripcion = (EditText) findViewById(R.id.txt_descripcion_insumo);
 
-        con = new ConexionSQLite(getApplicationContext(), utilidades.NOMBRE_BASE_DE_DATOS,null,1);
     }
 
     @Override
@@ -54,12 +53,11 @@ public class agregar_insumo extends AppCompatActivity implements View.OnClickLis
     }
 
     private void registrarInsumo() {
-        ConexionSQLite con = new ConexionSQLite(this, utilidades.NOMBRE_BASE_DE_DATOS,null,1);
         SQLiteDatabase db = con.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(utilidades.CODIGO_INSUMO,codigo.getText().toString());
         values.put(utilidades.NOMBRE_INSUMO,nombre.getText().toString());
-        values.put(utilidades.PRECIO_UNITARIO_INSUMO,Integer.parseInt(precio.getText().toString()));
+        values.put(utilidades.PRECIO_UNITARIO_INSUMO,Double.parseDouble(precio.getText().toString()));
         values.put(utilidades.CANTIDAD_INSUMO,Integer.parseInt(cantidad.getText().toString()));
         values.put(utilidades.DESCRIPCION_INSUMO,descripcion.getText().toString());
         Long idResultante =  db.insert(utilidades.TABLA_INSUMO,utilidades.CODIGO_INSUMO,values);

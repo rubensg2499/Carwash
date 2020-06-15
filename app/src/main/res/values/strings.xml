@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Menú - CARWASH</string>
+    <string name="app_name">CARWASH</string>
     <string name="titulo_cliente">Clientes</string>
     <string name="titulo_servicio">Servicios</string>
     <string name="titulo_trabajador">Trabajadores</string>

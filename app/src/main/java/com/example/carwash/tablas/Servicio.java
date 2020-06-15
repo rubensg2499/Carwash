@@ -1,20 +1,18 @@
 package com.example.carwash.tablas;
 
-public class Insumo {
+public class Servicio {
     String codigo;
     String nombre;
-    double precio;
-    int cantidad;
+    double costo;
     String descripcion;
 
-    public Insumo() {
+    public Servicio() {
     }
 
-    public Insumo(String codigo, String nombre, double precio, int cantidad, String descripcion) {
+    public Servicio(String codigo, String nombre, double costo, String descripcion) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.precio = precio;
-        this.cantidad = cantidad;
+        this.costo = costo;
         this.descripcion = descripcion;
     }
 
@@ -34,20 +32,12 @@ public class Insumo {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getCosto() {
+        return costo;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public String getDescripcion() {
