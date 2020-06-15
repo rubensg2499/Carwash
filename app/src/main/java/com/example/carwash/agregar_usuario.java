@@ -43,9 +43,13 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
                         reppass.getText().toString().length() > 0 &&
                         codigo_trabajador.getSelectedItemPosition() > 0
                 ){
-                    registrarUsuario();
-                    Intent intent = new Intent(v.getContext(),MainActivity.class);
-                    startActivityForResult(intent, 0);
+                    if(pass.getText().toString().equals(reppass.getText().toString())){
+                        registrarUsuario();
+                        Intent intent = new Intent(v.getContext(),MainActivity.class);
+                        startActivityForResult(intent, 0);
+                    }else{
+                        Toast.makeText(this,"Las contraseñas no coinciden, intente de nuevo.",Toast.LENGTH_LONG).show();
+                    }
                 }else{
                     Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();
                 }
