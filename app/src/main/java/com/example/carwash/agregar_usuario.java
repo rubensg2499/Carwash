@@ -4,34 +4,42 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.carwash.tablas.Usuario;
 import com.example.carwash.utilidades.utilidades;
 
 import java.sql.SQLData;
+import java.util.ArrayList;
 
 public class agregar_usuario extends AppCompatActivity implements View.OnClickListener{
     EditText usuario;
     EditText pass;
     EditText reppass;
     Spinner codigo_trabajador;
+    ArrayList<String> codigos;
+    ConexionSQLite con;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_usuario);
         this.setTitle(R.string.titulo_agregar_usuario);
-
+        codigos = new ArrayList<String>();
         View boton = findViewById(R.id.btn_guardar_agregar_usuario);
         boton.setOnClickListener(this);
         usuario = (EditText) findViewById(R.id.txt_nombre_usuario);
         pass = (EditText) findViewById(R.id.txt_pass_usuario);
         reppass = (EditText) findViewById(R.id.txt_repetirpassword_usuario);
         codigo_trabajador = (Spinner) findViewById(R.id.cbx_codigo_trabajador_usuario);
+        cargarCodigos();
+        codigo_trabajador.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,codigos));
     }
 
     @Override
@@ -67,5 +75,14 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
         Long idResultante =  db.insert(utilidades.TABLA_USUARIO,utilidades.CODIGO_USUARIO,values);
         Toast.makeText(getApplicationContext(),"Id Registro "+idResultante,Toast.LENGTH_LONG).show();
         db.close();
+    }
+
+    public void cargarCodigos(){
+        SQLiteDatabase db = con.getReadableDatabase();
+        codigos.add("Seleccione un código");
+        Cursor cursor = db.rawQuery("SELECT * FROM "+utilidades.TABLA_USUARIO,null);
+        while(cursor.moveToNext()){
+            codigos.add(cursor.getString(0));
+        }
     }
 }
