@@ -33,7 +33,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         db.execSQL(utilidades.BORRAR_SI_EXISTE_CLIENTE);
         db.execSQL(utilidades.BORRAR_SI_EXISTE_INSUMO);
         db.execSQL(utilidades.BORRAR_SI_EXISTE_SERVICIO);
-        
+
         onCreate(db);
     }
 }
