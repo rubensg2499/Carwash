@@ -40,9 +40,6 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
         codigo_trabajador = (Spinner) findViewById(R.id.cbx_codigo_trabajador_usuario);
         con = new ConexionSQLite(getApplicationContext(), utilidades.NOMBRE_BASE_DE_DATOS,null,1);
         cargarCodigos();
-        for(int i=0;i<codigos.size();i++){
-            System.out.println(codigos.get(i));
-        }
         codigo_trabajador.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,codigos));
     }
 
