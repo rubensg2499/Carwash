@@ -1,12 +1,17 @@
 package com.example.carwash;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -40,6 +45,31 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
         consultarListaClientes();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, informacion);
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                AlertDialog.Builder alerta = new AlertDialog.Builder(clientes.this);
+                alerta.setMessage(clientes.get(position).getNombre()
+                        +" "+clientes.get(position).getApellidos()
+                        +"\nTeléfono: "+clientes.get(position).getTelefono()
+                        +"\nPlacas: "+clientes.get(position).getPlacas()
+                        +"\nMarca: "+clientes.get(position).getMarca()
+                        +"\nTipo: "+clientes.get(position).getTipo()
+                        +"\nModelo: "+clientes.get(position).getModelo())
+                .setCancelable(false)
+                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog ventana = alerta.create();
+                ventana.setTitle("Cliente");
+                ventana.show();
+            }
+        });
     }
 
     private void consultarListaClientes() {
@@ -84,4 +114,5 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
         }
 
     }
+
 }

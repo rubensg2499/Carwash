@@ -1,12 +1,16 @@
 package com.example.carwash;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.carwash.tablas.Usuario;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,6 +43,26 @@ public class usuarios extends AppCompatActivity implements View.OnClickListener 
         consultarListaUsuarios();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, informacion);
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                AlertDialog.Builder alerta = new AlertDialog.Builder(usuarios.this);
+                alerta.setMessage("Usuario: "+usuarios.get(position).getCodigo()
+                        +"\nCódigo trabajador: "+usuarios.get(position).getCodigo_trabajador())
+                        .setCancelable(false)
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog ventana = alerta.create();
+                ventana.setTitle("Usuario");
+                ventana.show();
+            }
+        });
     }
 
     private void consultarListaUsuarios() {

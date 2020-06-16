@@ -1,12 +1,15 @@
 package com.example.carwash;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -41,6 +44,29 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, informacion);
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = parent.getItemAtPosition(position).toString();
+                AlertDialog.Builder alerta = new AlertDialog.Builder(insumos.this);
+                alerta.setMessage("Producto: "+insumos.get(position).getNombre()
+                        +"\nCódigo: "+insumos.get(position).getCodigo()
+                        +"\nPrecio U: "+insumos.get(position).getPrecio()
+                        +"\nCantidad: "+insumos.get(position).getCantidad()
+                        +"\nDescripción: "+insumos.get(position).getDescripcion())
+                        .setCancelable(false)
+                        .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog ventana = alerta.create();
+                ventana.setTitle("Insumo");
+                ventana.show();
+            }
+        });
     }
 
     private void consultarListaInsumos() {

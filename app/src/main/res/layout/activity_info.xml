@@ -9,12 +9,13 @@
 
     <TextView
         android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="263dp"
+        android:layout_height="282dp"
         android:text="Carwash\nVersión: 2.0\nDesarrollador: Rubén Sánchez González\nCorreo: sangoru99@hotmail.com\nDesarrollo de software orientado a objetos\nFecha de compilación: 15 de junio de 2020"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
