@@ -103,10 +103,6 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()){
-            case R.id.btn_regresar_cliente:
-                intent = new Intent (v.getContext(), MainActivity.class);
-                startActivityForResult(intent, 0);
-                break;
             case R.id.btn_agregar_cliente:
                 intent = new Intent (v.getContext(), agregar_cliente.class);
                 startActivityForResult(intent, 0);

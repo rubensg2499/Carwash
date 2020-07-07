@@ -96,10 +96,6 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()){
-            case R.id.btn_regresar_insumo:
-                intent = new Intent (v.getContext(), MainActivity.class);
-                startActivityForResult(intent, 0);
-                break;
             case R.id.btn_agregar_insumo:
                 intent = new Intent (v.getContext(), agregar_insumo.class);
                 startActivityForResult(intent, 0);

@@ -97,10 +97,6 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()){
-            case R.id.btn_regresar_trabajador:
-                intent = new Intent (v.getContext(), MainActivity.class);
-                startActivityForResult(intent, 0);
-                break;
             case R.id.btn_agregar_trabajador:
                 intent = new Intent (v.getContext(), agregar_trabajador.class);
                 startActivityForResult(intent, 0);
