@@ -45,7 +45,7 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(clientes.this);
                 alerta.setMessage(clientes.get(position).getNombre()
@@ -61,6 +61,40 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
+                })
+                .setNegativeButton("Eliminar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AlertDialog.Builder alerta = new AlertDialog.Builder(clientes.this);
+                        alerta.setMessage("¿Está seguro de eliminar este registro?, esta acción no es reversible.")
+                        .setCancelable(false)
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(eliminarCliente(utilidades.ELIMINAR_CLIENTE+"'"+clientes.get(position).getPlacas()+"'")){
+                                    clientes.this.recreate();
+                                    Toast.makeText(getApplicationContext(),"Registro eliminado",Toast.LENGTH_LONG).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!"+clientes.get(position).getPlacas(),Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                        AlertDialog ventana = alerta.create();
+                        ventana.setTitle("Alerta");
+                        ventana.show();
+
+                    }
+                }).setNeutralButton("Actualizar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
                 });
 
                 AlertDialog ventana = alerta.create();
@@ -69,7 +103,15 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
             }
         });
     }
-
+    boolean eliminarCliente(String sql){
+        SQLiteDatabase db = con.getWritableDatabase();
+        if(db!=null){
+            db.execSQL(sql);
+            db.close();
+            return true;
+        }
+        return false;
+    }
     private void consultarListaClientes() {
         SQLiteDatabase db = con.getReadableDatabase();
         Cliente c = null;
@@ -88,6 +130,7 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
             clientes.add(c);
         }
         obtenerLista();
+        db.close();
     }
 
     private void obtenerLista() {

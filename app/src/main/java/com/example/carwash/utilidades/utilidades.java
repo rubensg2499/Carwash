@@ -54,4 +54,11 @@ public class utilidades {
     public static final String BORRAR_SI_EXISTE_CLIENTE = "DROP TABLE IF EXIST "+TABLA_CLIENTE;
     public static final String BORRAR_SI_EXISTE_INSUMO = "DROP TABLE IF EXIST "+TABLA_INSUMO;
     public static final String BORRAR_SI_EXISTE_SERVICIO = "DROP TABLE IF EXIST "+TABLA_SERVICIO;
+
+    //Borrar un registro
+    public  static final String ELIMINAR_USUARIO = "DELETE FROM "+TABLA_USUARIO+" WHERE "+CODIGO_USUARIO+" = ";
+    public  static final String ELIMINAR_TRABAJADOR = "DELETE FROM "+TABLA_TRABAJADOR+" WHERE "+CODIGO_TRABAJADOR+" = ";
+    public  static final String ELIMINAR_CLIENTE = "DELETE FROM "+TABLA_CLIENTE+" WHERE "+PLACAS_VEHICULO+" = ";
+    public  static final String ELIMINAR_INSUMO = "DELETE FROM "+TABLA_INSUMO+" WHERE "+CODIGO_INSUMO+" = ";
+    public  static final String ELIMINAR_SERVICIO = "DELETE FROM "+TABLA_SERVICIO+" WHERE "+CODIGO_SERVICIO+" = ";
 }

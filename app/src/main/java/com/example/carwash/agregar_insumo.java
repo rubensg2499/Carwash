@@ -43,7 +43,7 @@ public class agregar_insumo extends AppCompatActivity implements View.OnClickLis
                         nombre.getText().toString().length() > 0
                 ){
                     registrarInsumo();
-                    Intent intent = new Intent(v.getContext(),MainActivity.class);
+                    Intent intent = new Intent(v.getContext(),insumos.class);
                     startActivityForResult(intent, 0);
                 }else{
                     Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();

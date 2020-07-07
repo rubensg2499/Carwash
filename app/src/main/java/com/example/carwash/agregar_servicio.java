@@ -42,7 +42,7 @@ public class agregar_servicio extends AppCompatActivity implements View.OnClickL
                         descripcion.getText().toString().length() > 0
                 ){
                     registrarServicio();
-                    Intent intent = new Intent(v.getContext(),MainActivity.class);
+                    Intent intent = new Intent(v.getContext(),servicios.class);
                     startActivityForResult(intent, 0);
                 }else{
                     Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();

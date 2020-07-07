@@ -54,7 +54,7 @@ public class agregar_trabajador extends AppCompatActivity implements View.OnClic
                         fecha_contratacion.getText().toString().length() > 0
                 ){
                     registrarTrabajador();
-                    Intent intent = new Intent(v.getContext(),MainActivity.class);
+                    Intent intent = new Intent(v.getContext(),trabajadores.class);
                     startActivityForResult(intent, 0);
                 }else{
                     Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();
