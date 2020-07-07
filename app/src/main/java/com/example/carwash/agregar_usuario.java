@@ -74,7 +74,7 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
         values.put(utilidades.PASSWORD_USUARIO,pass.getText().toString());
         values.put(utilidades.CODIGO_TRABAJADOR,codigo_trabajador.getSelectedItem().toString());
         Long idResultante =  db.insert(utilidades.TABLA_USUARIO,utilidades.CODIGO_USUARIO,values);
-        Toast.makeText(getApplicationContext(),"Id Registro "+idResultante,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"¡Usuario registrado!",Toast.LENGTH_LONG).show();
         db.close();
     }
 

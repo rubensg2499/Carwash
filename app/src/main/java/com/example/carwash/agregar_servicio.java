@@ -59,7 +59,7 @@ public class agregar_servicio extends AppCompatActivity implements View.OnClickL
         values.put(utilidades.COSTO_SERVICIO,Double.parseDouble(costo.getText().toString()));
         values.put(utilidades.DESCRIPCION_SERVICIO,descripcion.getText().toString());
         Long idResultante =  db.insert(utilidades.TABLA_SERVICIO,utilidades.CODIGO_SERVICIO,values);
-        Toast.makeText(getApplicationContext(),"Registro exitoso "+idResultante,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"¡Servicio registrado!",Toast.LENGTH_LONG).show();
         db.close();
     }
 }

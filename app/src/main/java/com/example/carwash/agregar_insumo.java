@@ -61,7 +61,7 @@ public class agregar_insumo extends AppCompatActivity implements View.OnClickLis
         values.put(utilidades.CANTIDAD_INSUMO,Integer.parseInt(cantidad.getText().toString()));
         values.put(utilidades.DESCRIPCION_INSUMO,descripcion.getText().toString());
         Long idResultante =  db.insert(utilidades.TABLA_INSUMO,utilidades.CODIGO_INSUMO,values);
-        Toast.makeText(getApplicationContext(),"Registro exitoso "+idResultante,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"¡Insumo registrado! ",Toast.LENGTH_LONG).show();
         db.close();
     }
 }

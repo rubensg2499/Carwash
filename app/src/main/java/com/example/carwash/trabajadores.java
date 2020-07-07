@@ -32,9 +32,7 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         this.setTitle(R.string.titulo_trabajador);
         setContentView(R.layout.activity_trabajadores);
-        View regresar = findViewById(R.id.btn_regresar_trabajador);
         View agregar = findViewById(R.id.btn_agregar_trabajador);
-        regresar.setOnClickListener(this);
         agregar.setOnClickListener(this);
         listview = (ListView) findViewById(R.id.lista_trabajadores);
         informacion = new ArrayList<String>();

@@ -32,9 +32,7 @@ public class servicios extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicios);
         this.setTitle(R.string.titulo_servicio);
-        View regresar = findViewById(R.id.btn_regresar_servicio);
         View agregar = findViewById(R.id.btn_agregar_servicio);
-        regresar.setOnClickListener(this);
         agregar.setOnClickListener(this);
         listview = (ListView) findViewById(R.id.lista_servicios);
         informacion = new ArrayList<String>();

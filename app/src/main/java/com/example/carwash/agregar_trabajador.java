@@ -75,7 +75,7 @@ public class agregar_trabajador extends AppCompatActivity implements View.OnClic
         values.put(utilidades.FECHA_CONTRATACION,fecha_contratacion.getText().toString());
 
         Long idResultante =  db.insert(utilidades.TABLA_TRABAJADOR,utilidades.CODIGO_TRABAJADOR,values);
-        Toast.makeText(getApplicationContext(),"Id Registro "+idResultante,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"¡Trabajador registrado!",Toast.LENGTH_LONG).show();
         db.close();
     }
 }

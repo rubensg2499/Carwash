@@ -34,9 +34,7 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clientes);
         this.setTitle(R.string.titulo_cliente);
-        View regresar = findViewById(R.id.btn_regresar_cliente);
         View agregar = findViewById(R.id.btn_agregar_cliente);
-        regresar.setOnClickListener(this);
         agregar.setOnClickListener(this);
         listview = (ListView) findViewById(R.id.lista_clientes);
         informacion = new ArrayList<String>();

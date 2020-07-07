@@ -32,9 +32,7 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insumos);
         this.setTitle(R.string.titulo_insumo);
-        View regresar = findViewById(R.id.btn_regresar_insumo);
         View agregar = findViewById(R.id.btn_agregar_insumo);
-        regresar.setOnClickListener(this);
         agregar.setOnClickListener(this);
         listview = (ListView) findViewById(R.id.lista_insumos);
         informacion = new ArrayList<String>();

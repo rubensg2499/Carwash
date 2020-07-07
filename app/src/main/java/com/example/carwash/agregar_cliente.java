@@ -70,7 +70,7 @@ public class agregar_cliente extends AppCompatActivity implements View.OnClickLi
         values.put(utilidades.MODELO_VEHICULO,modelo.getText().toString());
 
         Long idResultante =  db.insert(utilidades.TABLA_CLIENTE,utilidades.PLACAS_VEHICULO,values);
-        Toast.makeText(getApplicationContext(),"Id Registro "+idResultante,Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"¡Cliente registrado!",Toast.LENGTH_LONG).show();
         db.close();
     }
 }

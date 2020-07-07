@@ -32,9 +32,7 @@ public class usuarios extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         this.setTitle(R.string.titulo_usuario);
         setContentView(R.layout.activity_usuarios);
-        View regresar = findViewById(R.id.btn_regresar_usuario);
         View agregar = findViewById(R.id.btn_agregar_usuario);
-        regresar.setOnClickListener(this);
         agregar.setOnClickListener(this);
         listview = (ListView) findViewById(R.id.lista_usuarios);
         informacion = new ArrayList<String>();
