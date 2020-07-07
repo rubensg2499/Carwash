@@ -31,26 +31,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.863"
-        app:layout_constraintStart_toEndOf="@+id/btn_regresar_trabajador"
-        app:layout_constraintTop_toBottomOf="@+id/lista_trabajadores"
-        app:layout_constraintVertical_bias="0.949" />
-
-    <Button
-
-        android:id="@+id/btn_regresar_trabajador"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/estilo1"
-        android:foreground="?attr/actionModeCloseDrawable"
-        android:foregroundTint="#fff"
-        android:text=""
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_trabajadores"
         app:layout_constraintVertical_bias="0.949" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

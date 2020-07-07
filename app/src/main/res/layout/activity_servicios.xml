@@ -30,23 +30,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toEndOf="@+id/btn_regresar_servicio"
-        app:layout_constraintTop_toBottomOf="@+id/lista_servicios"
-        app:layout_constraintVertical_bias="0.926" />
-
-    <Button
-        android:id="@+id/btn_regresar_servicio"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/estilo1"
-        android:foreground="?attr/actionModeCloseDrawable"
-        android:foregroundTint="#fff"
-        android:text=""
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lista_servicios"
         app:layout_constraintVertical_bias="0.926" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
