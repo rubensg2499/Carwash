@@ -56,9 +56,14 @@ public class utilidades {
     public static final String BORRAR_SI_EXISTE_SERVICIO = "DROP TABLE IF EXIST "+TABLA_SERVICIO;
 
     //Borrar un registro
-    public  static final String ELIMINAR_USUARIO = "DELETE FROM "+TABLA_USUARIO+" WHERE "+CODIGO_USUARIO+" = ";
-    public  static final String ELIMINAR_TRABAJADOR = "DELETE FROM "+TABLA_TRABAJADOR+" WHERE "+CODIGO_TRABAJADOR+" = ";
-    public  static final String ELIMINAR_CLIENTE = "DELETE FROM "+TABLA_CLIENTE+" WHERE "+PLACAS_VEHICULO+" = ";
-    public  static final String ELIMINAR_INSUMO = "DELETE FROM "+TABLA_INSUMO+" WHERE "+CODIGO_INSUMO+" = ";
-    public  static final String ELIMINAR_SERVICIO = "DELETE FROM "+TABLA_SERVICIO+" WHERE "+CODIGO_SERVICIO+" = ";
+    public static final String ELIMINAR_USUARIO = "DELETE FROM "+TABLA_USUARIO+" WHERE "+CODIGO_USUARIO+" = ";
+    public static final String ELIMINAR_TRABAJADOR = "DELETE FROM "+TABLA_TRABAJADOR+" WHERE "+CODIGO_TRABAJADOR+" = ";
+    public static final String ELIMINAR_CLIENTE = "DELETE FROM "+TABLA_CLIENTE+" WHERE "+PLACAS_VEHICULO+" = ";
+    public static final String ELIMINAR_INSUMO = "DELETE FROM "+TABLA_INSUMO+" WHERE "+CODIGO_INSUMO+" = ";
+    public static final String ELIMINAR_SERVICIO = "DELETE FROM "+TABLA_SERVICIO+" WHERE "+CODIGO_SERVICIO+" = ";
+
+    //Otros datos
+
+    public static final int GUARDAR = 1;
+    public static final int ACTUALIZAR = 2;
 }

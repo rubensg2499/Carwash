@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -93,7 +94,16 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
                 }).setNeutralButton("Actualizar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent intent = new Intent(clientes.this,agregar_cliente.class);
+                        intent.putExtra("nombre",clientes.get(position).getNombre());
+                        intent.putExtra("apellidos",clientes.get(position).getApellidos());
+                        intent.putExtra("telefono",clientes.get(position).getTelefono());
+                        intent.putExtra("placas",clientes.get(position).getPlacas());
+                        intent.putExtra("marca",clientes.get(position).getMarca());
+                        intent.putExtra("tipo",clientes.get(position).getTipo());
+                        intent.putExtra("modelo",clientes.get(position).getModelo());
+                        intent.putExtra("bandera",utilidades.ACTUALIZAR);
+                        startActivity(intent);
                     }
                 });
 
