@@ -43,7 +43,7 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(trabajadores.this);
                 alerta.setMessage("Código: "+trabajadores.get(position).getCodigo_trabajador()
@@ -56,6 +56,48 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
+                        })
+                        .setNegativeButton("Eliminar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(trabajadores.this);
+                                alerta.setMessage("¿Está seguro de eliminar este registro?, esta acción no es reversible.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if(eliminarTrabajador(utilidades.ELIMINAR_TRABAJADOR+"'"+trabajadores.get(position).getCodigo_trabajador()+"'")){
+                                                    trabajadores.this.recreate();
+                                                    Toast.makeText(getApplicationContext(),"Registro eliminado",Toast.LENGTH_LONG).show();
+                                                }else{
+                                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!",Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        })
+                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog ventana = alerta.create();
+                                ventana.setTitle("Alerta");
+                                ventana.show();
+                            }
+                        })
+                        .setNeutralButton("Actualizar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(trabajadores.this,agregar_trabajador.class);
+                                intent.putExtra("codigo_trabajador",trabajadores.get(position).getCodigo_trabajador());
+                                intent.putExtra("nombre",trabajadores.get(position).getNombre());
+                                intent.putExtra("paterno",trabajadores.get(position).getApe_pat());
+                                intent.putExtra("materno",trabajadores.get(position).getApe_mat());
+                                intent.putExtra("telefono",trabajadores.get(position).getTelefono());
+                                intent.putExtra("fecha",trabajadores.get(position).getFecha());
+                                intent.putExtra("bandera",utilidades.ACTUALIZAR);
+                                startActivity(intent);
+                            }
                         });
 
                 AlertDialog ventana = alerta.create();
@@ -64,7 +106,15 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
+    boolean eliminarTrabajador(String sql){
+        SQLiteDatabase db = con.getWritableDatabase();
+        if(db!=null){
+            db.execSQL(sql);
+            db.close();
+            return true;
+        }
+        return false;
+    }
     private void consultarListaTrabajadores() {
         SQLiteDatabase db = con.getReadableDatabase();
         Trabajador t = null;
