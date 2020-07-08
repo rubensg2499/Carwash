@@ -76,7 +76,7 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
                                     clientes.this.recreate();
                                     Toast.makeText(getApplicationContext(),"Registro eliminado",Toast.LENGTH_LONG).show();
                                 }else{
-                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!"+clientes.get(position).getPlacas(),Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!",Toast.LENGTH_LONG).show();
                                 }
                             }
                         })
@@ -156,6 +156,7 @@ public class clientes extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.btn_agregar_cliente:
                 intent = new Intent (v.getContext(), agregar_cliente.class);
+                intent.putExtra("bandera", utilidades.GUARDAR);
                 startActivityForResult(intent, 0);
                 break;
         }

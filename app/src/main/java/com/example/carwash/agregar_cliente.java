@@ -66,7 +66,7 @@ public class agregar_cliente extends AppCompatActivity implements View.OnClickLi
                             tipo.getText().toString().length() > 0
                     ){
                         registrarCliente();
-                        Intent intent = new Intent(v.getContext(),clientes.class);
+                        Intent intent = new Intent(v.getContext(),MainActivity.class);
                         startActivityForResult(intent, 0);
                     }else{
                         Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();
@@ -78,7 +78,7 @@ public class agregar_cliente extends AppCompatActivity implements View.OnClickLi
                             tipo.getText().toString().length() > 0
                     ){
                         actualizarCliente();
-                        Intent intent = new Intent(v.getContext(),clientes.class);
+                        Intent intent = new Intent(v.getContext(),MainActivity.class);
                         startActivityForResult(intent, 0);
                     }else{
                         Toast.makeText(this,"Por favor complete los campos solicitados.",Toast.LENGTH_LONG).show();

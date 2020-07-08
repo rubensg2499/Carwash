@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_trabajadores:
                 intent = new Intent (v.getContext(), trabajadores.class);
-                intent.putExtra("bandera", utilidades.GUARDAR);
                 startActivityForResult(intent, 0);
                 break;
             case R.id.btn_clientes:

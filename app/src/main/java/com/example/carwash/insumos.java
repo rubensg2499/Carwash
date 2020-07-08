@@ -44,7 +44,7 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(insumos.this);
                 alerta.setMessage("Producto: "+insumos.get(position).getNombre()
@@ -58,6 +58,47 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
+                        })
+                        .setNegativeButton("Eliminar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(insumos.this);
+                                alerta.setMessage("¿Está seguro de eliminar este registro?, esta acción no es reversible.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if(eliminarInsumo(utilidades.ELIMINAR_INSUMO+"'"+insumos.get(position).getCodigo()+"'")){
+                                                    insumos.this.recreate();
+                                                    Toast.makeText(getApplicationContext(),"Registro eliminado",Toast.LENGTH_LONG).show();
+                                                }else{
+                                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!",Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        })
+                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog ventana = alerta.create();
+                                ventana.setTitle("Alerta");
+                                ventana.show();
+                            }
+                        })
+                        .setNeutralButton("Actualizar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(insumos.this,agregar_insumo.class);
+                                intent.putExtra("codigo",insumos.get(position).getCodigo());
+                                intent.putExtra("nombre",insumos.get(position).getNombre());
+                                intent.putExtra("precio",insumos.get(position).getPrecio());
+                                intent.putExtra("cantidad",insumos.get(position).getCantidad());
+                                intent.putExtra("descripcion",insumos.get(position).getDescripcion());
+                                intent.putExtra("bandera",utilidades.ACTUALIZAR);
+                                startActivity(intent);
+                            }
                         });
 
                 AlertDialog ventana = alerta.create();
@@ -65,6 +106,15 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
                 ventana.show();
             }
         });
+    }
+    boolean eliminarInsumo(String sql){
+        SQLiteDatabase db = con.getWritableDatabase();
+        if(db!=null){
+            db.execSQL(sql);
+            db.close();
+            return true;
+        }
+        return false;
     }
 
     private void consultarListaInsumos() {
@@ -96,6 +146,7 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_agregar_insumo:
                 intent = new Intent (v.getContext(), agregar_insumo.class);
+                intent.putExtra("bandera", utilidades.GUARDAR);
                 startActivityForResult(intent, 0);
                 break;
         }
