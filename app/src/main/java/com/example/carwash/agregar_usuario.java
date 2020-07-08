@@ -54,7 +54,7 @@ public class agregar_usuario extends AppCompatActivity implements View.OnClickLi
                 ){
                     if(pass.getText().toString().equals(reppass.getText().toString())){
                         registrarUsuario();
-                        Intent intent = new Intent(v.getContext(),usuarios.class);
+                        Intent intent = new Intent(v.getContext(),MainActivity.class);
                         startActivityForResult(intent, 0);
                     }else{
                         Toast.makeText(this,"Las contraseñas no coinciden, intente de nuevo.",Toast.LENGTH_LONG).show();

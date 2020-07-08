@@ -141,6 +141,7 @@ public class servicios extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()){
             case R.id.btn_agregar_servicio:
                 intent = new Intent (v.getContext(), agregar_servicio.class);
+                intent.putExtra("bandera", utilidades.GUARDAR);
                 startActivityForResult(intent, 0);
                 break;
         }

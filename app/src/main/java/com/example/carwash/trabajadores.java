@@ -147,6 +147,7 @@ public class trabajadores extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btn_agregar_trabajador:
                 intent = new Intent (v.getContext(), agregar_trabajador.class);
+                intent.putExtra("bandera", utilidades.GUARDAR);
                 startActivityForResult(intent, 0);
                 break;
         }
