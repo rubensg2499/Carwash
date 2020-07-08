@@ -44,7 +44,7 @@ public class servicios extends AppCompatActivity implements View.OnClickListener
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
                 AlertDialog.Builder alerta = new AlertDialog.Builder(servicios.this);
                 alerta.setMessage(servicios.get(position).getNombre()
@@ -57,6 +57,46 @@ public class servicios extends AppCompatActivity implements View.OnClickListener
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
+                        })
+                        .setNegativeButton("Eliminar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                AlertDialog.Builder alerta = new AlertDialog.Builder(servicios.this);
+                                alerta.setMessage("¿Está seguro de eliminar este registro?, esta acción no es reversible.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if(eliminarServicio(utilidades.ELIMINAR_SERVICIO+"'"+servicios.get(position).getCodigo()+"'")){
+                                                    servicios.this.recreate();
+                                                    Toast.makeText(getApplicationContext(),"Registro eliminado",Toast.LENGTH_LONG).show();
+                                                }else{
+                                                    Toast.makeText(getApplicationContext(),"¡Error no se pudo borrar el registro!",Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        })
+                                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                                AlertDialog ventana = alerta.create();
+                                ventana.setTitle("Alerta");
+                                ventana.show();
+                            }
+                        })
+                        .setNeutralButton("Actualizar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(servicios.this,agregar_servicio.class);
+                                intent.putExtra("codigo",servicios.get(position).getCodigo());
+                                intent.putExtra("nombre",servicios.get(position).getNombre());
+                                intent.putExtra("costo",servicios.get(position).getCosto());
+                                intent.putExtra("descripcion",servicios.get(position).getDescripcion());
+                                intent.putExtra("bandera",utilidades.ACTUALIZAR);
+                                startActivity(intent);
+                            }
                         });
 
                 AlertDialog ventana = alerta.create();
@@ -65,7 +105,15 @@ public class servicios extends AppCompatActivity implements View.OnClickListener
             }
         });
     }
-
+    boolean eliminarServicio(String sql){
+        SQLiteDatabase db = con.getWritableDatabase();
+        if(db!=null){
+            db.execSQL(sql);
+            db.close();
+            return true;
+        }
+        return false;
+    }
     private void consultarListaServicios() {
         SQLiteDatabase db = con.getReadableDatabase();
         Servicio s = null;
