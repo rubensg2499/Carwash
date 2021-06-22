@@ -11,7 +11,7 @@
         android:id="@+id/textView10"
         android:layout_width="263dp"
         android:layout_height="282dp"
-        android:text="Carwash\nVersión: 2.8\nDesarrollador: Rubén Sánchez González\nCorreo: sangoru99@hotmail.com\nDesarrollo de software orientado a objetos\nFecha de compilación: 07 de julio de 2020"
+        android:text="Carwash\nVersión: 2.9\nDesarrollador: Rubén Sánchez González\nCorreo: sangoru99@hotmail.com\nDesarrollo de aplicaciones para dispositivos móviles\nFecha de compilación: 22 de julio de 2021"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

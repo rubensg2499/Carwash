@@ -126,7 +126,7 @@ public class insumos extends AppCompatActivity implements View.OnClickListener {
             i = new Insumo();
             i.setCodigo(cursor.getString(0));
             i.setNombre(cursor.getString(1));
-            i.setPrecio(Integer.parseInt(cursor.getString(2)));
+            i.setPrecio(Double.parseDouble(cursor.getString(2)));
             i.setCantidad(Integer.parseInt(cursor.getString(3)));
             i.setDescripcion(cursor.getString(4));
             insumos.add(i);
